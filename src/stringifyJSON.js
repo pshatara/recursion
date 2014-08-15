@@ -2,7 +2,6 @@
 // var stringifyJSON = JSON.stringify;
 
 // but you don't so you're going to write it from scratch:
-var testCounter = 1;
 var stringifyJSON = function(obj) {
   	// your code goes here
   	var objType = typeof(obj);
@@ -11,8 +10,6 @@ var stringifyJSON = function(obj) {
 		if (objType == 'string') {
 			obj = '"'+obj+'"';
 		}
-		console.log(testCounter);
-		testCounter++;
 		return String(obj);
 
 	} else {
@@ -23,8 +20,6 @@ var stringifyJSON = function(obj) {
 			for (var i = 0; i < obj.length; i++) {
 				json.push(typeof(obj[i]) != 'object' ? (typeof(obj[i]) === 'string' ? '"' + String(obj[i]) + '"' : String(obj[i])) : stringifyJSON(obj[i]));
 			}
-			console.log(testCounter);
-			testCounter++;
 			return '[' + json + ']';
 		} else { //Strinifies input from all other objects including functions
 			for (var key in obj) {
@@ -46,8 +41,6 @@ var stringifyJSON = function(obj) {
 					json.push('"' + key + '"' + ':' + value);
 				}
 			}
-			console.log(testCounter);
-			testCounter++;
 			return ('{' + String(json) + '}');
 		}
 	}
